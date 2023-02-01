@@ -5,6 +5,12 @@ import threading
 import os
 import sys
 from blessed import Terminal
+import platform
+
+if platform.system() == "Windows":
+  CLEAR = "cls"
+else:
+  CLEAR = "clear"
 
 term = Terminal()
 
@@ -13,7 +19,7 @@ tilemap = TileMap([4, 4], map, landSymbol="\u2588", waterSymbol="\u2588", doorSy
 playerPos = [0, 0]
 running = True
 while running:
-  os.system("clear")
+  os.system(CLEAR)
   showTileMap(tilemap, showPlayer=True, playerPos=playerPos, wrapper=None, playerSymbol="\u2588")
   with term.cbreak():
     command = term.inkey()
