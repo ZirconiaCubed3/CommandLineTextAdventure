@@ -43,25 +43,38 @@ def showTileMap(tilemap, playerSymbol="o", playerPos=[0, 0], showPlayer=False, w
   newMap = []
   for x in range(len(tilemap.map[0])):
     newMap.append([])
+    newMap.append([])
     for y in range(len(tilemap.map)):
-      for z in range(2):
-        if showPlayer and playerPos == [x, y]:
-          newMap[x].append(wrap(playerSymbol, wrapper))
-        elif tilemap.map[y][x]["type"] == "land":
-          newMap[x].append(wrap(colorString(tilemap.l, "yellow"), wrapper))
-          newMap[x].append(wrap(colorString(tilemap.l, "yellow"), wrapper))
-        elif tilemap.map[y][x]["type"] == "water":
-          newMap[x].append(wrap(colorString(tilemap.w, "blue"), wrapper))
-          newMap[x].append(wrap(colorString(tilemap.w, "blue"), wrapper))
-        elif tilemap.map[y][x]["type"] == "grass":
-          newMap[x].append(wrap(colorString(tilemap.g, "green"), wrapper))
-          newMap[x].append(wrap(colorString(tilemap.g, "green"), wrapper))
-        elif tilemap.map[y][x]["type"] == "door":
-          newMap[x].append(wrap(colorString(tilemap.d, "black"), wrapper))
-          newMap[x].append(wrap(colorString(tilemap.d, "black"), wrapper))
-        else:
-          newMap[x].append(".")
-          newMap[x].append(".")
+      if showPlayer and playerPos == [x, y]:
+        newMap[x].append(wrap(colorString(playerSymbol*3, "red"), wrapper))
+#        newMap[x].append(wrap(colorString(playerSymbol, "red"), wrapper))
+#        newMap[x+1].append(wrap(colorString(playerSymbol, "red"), wrapper))
+#        newMap[x+1].append(wrap(colorString(playerSymbol*3, "red"), wrapper))
+      elif tilemap.map[y][x]["type"] == "land":
+        newMap[x].append(wrap(colorString(tilemap.l*3, "yellow"), wrapper))
+#        newMap[x].append(wrap(colorString(tilemap.l, "yellow"), wrapper))
+#        newMap[x+1].append(wrap(colorString(tilemap.l, "yellow"), wrapper))
+#        newMap[x+1].append(wrap(colorString(tilemap.l*3, "yellow"), wrapper))
+      elif tilemap.map[y][x]["type"] == "water":
+        newMap[x].append(wrap(colorString(tilemap.w*3, "blue"), wrapper))
+#        newMap[x].append(wrap(colorString(tilemap.w, "blue"), wrapper))
+#        newMap[x+1].append(wrap(colorString(tilemap.w, "blue"), wrapper))
+#        newMap[x+1].append(wrap(colorString(tilemap.w*3, "blue"), wrapper))
+      elif tilemap.map[y][x]["type"] == "grass":
+        newMap[x].append(wrap(colorString(tilemap.g*3, "green"), wrapper))
+#        newMap[x].append(wrap(colorString(tilemap.g, "green"), wrapper))
+#        newMap[x+1].append(wrap(colorString(tilemap.g, "green"), wrapper))
+#        newMap[x+1].append(wrap(colorString(tilemap.g*3, "green"), wrapper))
+      elif tilemap.map[y][x]["type"] == "door":
+        newMap[x].append(wrap(colorString(tilemap.d*3, "black"), wrapper))
+#        newMap[x].append(wrap(colorString(tilemap.d, "black"), wrapper))
+#        newMap[x+1].append(wrap(colorString(tilemap.d, "black"), wrapper))
+#        newMap[x+1].append(wrap(colorString(tilemap.d*3, "black"), wrapper))
+      else:
+        newMap[x].append("...")
+#        newMap[x].append(".")
+#        newMap[x+1].append(".")
+#        newMap[x+1].append("...")
   printGrid(newMap)
 
 def loadTileMap(name):

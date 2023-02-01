@@ -9,12 +9,12 @@ from blessed import Terminal
 term = Terminal()
 
 map = loadTileMap("randomTileMap1")
-tilemap = TileMap([4, 4], map, landSymbol="#", waterSymbol="#", doorSymbol="#", grassSymbol="#")
+tilemap = TileMap([4, 4], map, landSymbol="\u2588", waterSymbol="\u2588", doorSymbol="\u2588", grassSymbol="\u2588")
 playerPos = [0, 0]
 running = True
 while running:
   os.system("clear")
-  showTileMap(tilemap, showPlayer=True, playerPos=playerPos, wrapper=None)
+  showTileMap(tilemap, showPlayer=True, playerPos=playerPos, wrapper=None, playerSymbol="\u2588")
   with term.cbreak():
     command = term.inkey()
   if "exit" in command:
